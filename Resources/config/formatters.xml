@@ -23,6 +23,18 @@
             <call method="setTemplatingEngine">
                 <argument type="service" id="templating" />
             </call>
+            <call method="setTemplateResources">
+                <argument>%nelmio_api_doc.template.resources%</argument>
+            </call>
+            <call method="setTemplateResource">
+                <argument>%nelmio_api_doc.template.resource%</argument>
+            </call>
+            <call method="setTemplateCss">
+                <argument>%nelmio_api_doc.template.css%</argument>
+            </call>
+            <call method="setTemplateJs">
+                <argument>%nelmio_api_doc.template.js%</argument>
+            </call>
             <call method="setMotdTemplate">
                 <argument>%nelmio_api_doc.motd.template%</argument>
             </call>

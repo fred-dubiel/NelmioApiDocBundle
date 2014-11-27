@@ -17,7 +17,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
-    {die;
+    {
+
         $treeBuilder = new TreeBuilder();
         $treeBuilder
             ->root('nelmio_api_doc')
@@ -28,8 +29,8 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('resources')->defaultValue('NelmioApiDocBundle::resources.html.twig')->end()
                         ->scalarNode('resource')->defaultValue('NelmioApiDocBundle::resource.html.twig')->end()
-                        ->scalarNode('css')->defaultValue('NelmioApiDocBundle::Components/motd.html.twig')->end()
-                        ->scalarNode('js')->defaultValue('NelmioApiDocBundle::Components/motd.html.twig')->end()
+                        ->scalarNode('css')->defaultValue(__DIR__ . '/../Resources/public/css/screen.css')->end()
+                        ->scalarNode('js')->defaultValue(__DIR__ . '/../Resources/public/js/all.js')->end()
                     ->end()
                 ->end()
                 ->arrayNode('exclude_sections')

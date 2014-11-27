@@ -24,6 +24,21 @@ class HtmlFormatter extends AbstractFormatter
     /**
      * @var string
      */
+    protected $templateResource;
+
+    /**
+     * @var string
+     */
+    protected $templateCss;
+
+    /**
+     * @var string
+     */
+    protected $templateJs;
+
+    /**
+     * @var string
+     */
     protected $apiName;
 
     /**
@@ -85,6 +100,54 @@ class HtmlFormatter extends AbstractFormatter
      * @var boolean
      */
     private $defaultSectionsOpened;
+
+    /**
+     * @return string
+     */
+    public function getTemplateResource()
+    {
+        return $this->templateResource;
+    }
+
+    /**
+     * @param string $templateResource
+     */
+    public function setTemplateResource($templateResource)
+    {
+        $this->templateResource = $templateResource;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplateCss()
+    {
+        return $this->templateCss;
+    }
+
+    /**
+     * @param string $templateCss
+     */
+    public function setTemplateCss($templateCss)
+    {
+        $this->templateCss = $templateCss;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTemplateJs()
+    {
+        return $this->templateJs;
+    }
+
+    /**
+     * @param string $templateJs
+     */
+    public function setTemplateJs($templateJs)
+    {
+        $this->templateJs = $templateJs;
+    }
 
     /**
      * @param array $authentication
@@ -219,7 +282,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     protected function renderOne(array $data)
     {
-        return $this->engine->render('NelmioApiDocBundle::resource.html.twig', array_merge(
+        return $this->engine->render($this->getTemplateResource(), array_merge(
             array(
                 'data'           => $data,
                 'displayContent' => true,
@@ -233,7 +296,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     protected function render(array $collection)
     {
-        return $this->engine->render('FlexyFtwoAdminBundle:Api:resources.html.twig', array_merge(
+        return $this->engine->render($this->getTemplateResources(), array_merge(
             array(
                 'resources' => $collection,
             ),
@@ -259,8 +322,8 @@ class HtmlFormatter extends AbstractFormatter
             'requestFormats'        => $this->requestFormats,
             'defaultRequestFormat'  => $this->defaultRequestFormat,
             'date'                  => date(DATE_RFC822),
-            'css'                   => file_get_contents(__DIR__ . '/../Resources/public/css/screen.css'),
-            'js'                    => file_get_contents(__DIR__ . '/../Resources/public/js/all.js'),
+            'css'                   => file_get_contents($this->getTemplateCss()),
+            'js'                    => file_get_contents($this->getTemplateJs()),
             'motdTemplate'          => $this->motdTemplate,
             'defaultSectionsOpened' => $this->defaultSectionsOpened,
         );

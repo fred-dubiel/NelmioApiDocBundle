@@ -13,6 +13,7 @@ class NelmioApiDocBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {
+        //fred esteve aqui
         parent::build($container);
 
         $container->addCompilerPass(new LoadExtractorParsersPass());

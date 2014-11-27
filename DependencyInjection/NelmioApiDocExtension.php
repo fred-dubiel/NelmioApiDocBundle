@@ -27,8 +27,13 @@ class NelmioApiDocExtension extends Extension
     {
         $processor = new Processor();
         $configuration = new Configuration();
+        var_dump($configuration, $configs);die;
         $config = $processor->processConfiguration($configuration, $configs);
 
+        $container->setParameter('nelmio_api_doc.template.resources', $config['template']['resources']);
+        $container->setParameter('nelmio_api_doc.template.resource', $config['template']['resource']);
+        $container->setParameter('nelmio_api_doc.template.css', $config['template']['css']);
+        $container->setParameter('nelmio_api_doc.template.js', $config['template']['js']);
         $container->setParameter('nelmio_api_doc.motd.template', $config['motd']['template']);
         $container->setParameter('nelmio_api_doc.exclude_sections', $config['exclude_sections']);
         $container->setParameter('nelmio_api_doc.default_sections_opened', $config['default_sections_opened']);

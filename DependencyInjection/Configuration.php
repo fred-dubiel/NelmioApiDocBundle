@@ -17,12 +17,21 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
-    {
+    {die;
         $treeBuilder = new TreeBuilder();
         $treeBuilder
             ->root('nelmio_api_doc')
             ->children()
                 ->scalarNode('name')->defaultValue('API documentation')->end()
+                ->arrayNode('template')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('resources')->defaultValue('NelmioApiDocBundle::resources.html.twig')->end()
+                        ->scalarNode('resource')->defaultValue('NelmioApiDocBundle::resource.html.twig')->end()
+                        ->scalarNode('css')->defaultValue('NelmioApiDocBundle::Components/motd.html.twig')->end()
+                        ->scalarNode('js')->defaultValue('NelmioApiDocBundle::Components/motd.html.twig')->end()
+                    ->end()
+                ->end()
                 ->arrayNode('exclude_sections')
                     ->prototype('scalar')
                     ->end()

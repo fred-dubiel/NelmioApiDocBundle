@@ -15,6 +15,12 @@ use Symfony\Component\Templating\EngineInterface;
 
 class HtmlFormatter extends AbstractFormatter
 {
+
+    /**
+     * @var string
+     */
+    protected $templateResources;
+
     /**
      * @var string
      */
@@ -193,6 +199,22 @@ class HtmlFormatter extends AbstractFormatter
     }
 
     /**
+     * @return string
+     */
+    public function getTemplateResources()
+    {
+        return $this->templateResources;
+    }
+
+    /**
+     * @param string $templateResources
+     */
+    public function setTemplateResources($templateResources)
+    {
+        $this->templateResources = $templateResources;
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function renderOne(array $data)
@@ -211,7 +233,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     protected function render(array $collection)
     {
-        return $this->engine->render('NelmioApiDocBundle::resources.html.twig', array_merge(
+        return $this->engine->render('FlexyFtwoAdminBundle:Api:resources.html.twig', array_merge(
             array(
                 'resources' => $collection,
             ),
@@ -224,6 +246,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     private function getGlobalVars()
     {
+        var_dump($this->templateResources);die;
         return array(
             'apiName'               => $this->apiName,
             'authentication'        => $this->authentication,

@@ -27,7 +27,7 @@ class NelmioApiDocExtension extends Extension
     {
         $processor = new Processor();
         $configuration = new Configuration();
-        var_dump($configuration, $configs);die;
+
         $config = $processor->processConfiguration($configuration, $configs);
 
         $container->setParameter('nelmio_api_doc.template.resources', $config['template']['resources']);

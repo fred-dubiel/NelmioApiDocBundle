@@ -246,7 +246,7 @@ class HtmlFormatter extends AbstractFormatter
      */
     private function getGlobalVars()
     {
-        var_dump($this->templateResources);die;
+
         return array(
             'apiName'               => $this->apiName,
             'authentication'        => $this->authentication,

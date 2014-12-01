@@ -41,7 +41,7 @@
         "jms/serializer": "For making use of serializer information in the doc."
     },
     "autoload": {
-        "psr-0": { "Nelmio\\ApiDocBundle": "" }
+        "psr-0": { "Nelmio\\ApiDocBundle": "vendor/nelmio/api-doc-bundle/Nelmio/ApiDocBundle" }
     },
     "target-dir": "Nelmio/ApiDocBundle",
     "extra": {
